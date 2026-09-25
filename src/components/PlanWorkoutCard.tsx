@@ -15,43 +15,33 @@ export default function PlanWorkoutCard({
   workout,
   isSavedTab = false,
 }: PlanWorkoutCardProps) {
-  const {
-    removeFromPlan,
-    removeSaved,
-    showToast,
-  } = useFitLog();
+  const { removeFromPlan, removeSaved, showToast } = useFitLog();
 
   function handleRemove() {
     if (isSavedTab) {
       removeSaved(workout.id);
 
-      showToast(
-        "Workout removed from saved."
-      );
+      showToast("Workout removed from saved.");
 
       return;
     }
 
     removeFromPlan(workout.id);
 
-    showToast(
-      "Workout removed from today's plan."
-    );
+    showToast("Workout removed from today's plan.");
   }
 
   function handleDone() {
     removeFromPlan(workout.id);
 
-    showToast(
-      "Workout marked as done."
-    );
+    showToast("Workout marked as done.");
   }
 
   return (
     <article
       className="
-        min-h-[114px]
         w-full
+        overflow-hidden
         rounded-xl
         border
         border-[#232732]
@@ -61,24 +51,40 @@ export default function PlanWorkoutCard({
       <div
         className="
           flex
-          min-h-[114px]
-          items-center
-          justify-between
-          gap-6
+          flex-col
+          gap-4
           p-4
+          md:flex-row
+          md:items-center
+          md:justify-between
+          md:gap-6
         "
       >
-        {/* LEFT */}
+        {/* WORKOUT INFORMATION */}
 
-        <div className="flex min-w-0 items-center gap-4">
+        <div
+          className="
+            flex
+            min-w-0
+            flex-1
+            flex-col
+            gap-4
+            sm:flex-row
+            sm:items-center
+          "
+        >
+          {/* IMAGE */}
+
           <div
             className="
               relative
-              h-20
-              w-36
+              h-44
+              w-full
               shrink-0
               overflow-hidden
               rounded-lg
+              sm:h-20
+              sm:w-36
             "
           >
             <Image
@@ -86,17 +92,16 @@ export default function PlanWorkoutCard({
               alt={workout.name}
               fill
               className="object-cover"
-              sizes="144px"
+              sizes="(max-width: 640px) 100vw, 144px"
             />
           </div>
 
-          <div className="min-w-0">
-            <Link
-              href={`/workouts/${workout.id}`}
-            >
+          {/* DETAILS */}
+
+          <div className="min-w-0 flex-1">
+            <Link href={`/workouts/${workout.id}`}>
               <h2
                 className="
-                  truncate
                   text-[18px]
                   font-bold
                   uppercase
@@ -111,40 +116,36 @@ export default function PlanWorkoutCard({
               </h2>
             </Link>
 
-            <p className="mt-0.5 text-[12px] leading-4 text-[#8a92a0]">
+            <p className="mt-1 text-[12px] leading-4 text-[#8a92a0]">
               {workout.equipment}
             </p>
 
             <div
               className="
-                mt-1.5
+                mt-2
                 flex
                 flex-wrap
                 items-center
-                gap-4
+                gap-x-4
+                gap-y-2
                 text-[12px]
                 leading-4
                 text-[#8a92a0]
               "
             >
               <span className="flex items-center gap-1.5">
-                <span className="text-[#ccff00]">
-                  ◷
-                </span>
+                <span className="text-[#ccff00]">◷</span>
                 {workout.duration} min
               </span>
 
               <span className="flex items-center gap-1.5">
-                <span className="text-[#ccff00]">
-                  ♨
-                </span>
+                <span className="text-[#ccff00]">♨</span>
                 {workout.caloriesBurned} kcal
               </span>
 
               <span className="flex items-center gap-1.5">
-                <span className="text-[#ccff00]">
-                  ★
-                </span>
+                <span className="text-[#ccff00]">★</span>
+
                 {workout.rating}
               </span>
             </div>
@@ -156,9 +157,13 @@ export default function PlanWorkoutCard({
         <div
           className="
             flex
+            w-full
             shrink-0
-            items-center
-            gap-3
+            flex-col
+            gap-2
+            sm:flex-row
+            md:w-auto
+            md:items-center
           "
         >
           {/* VIEW DETAILS */}
@@ -167,7 +172,8 @@ export default function PlanWorkoutCard({
             href={`/workouts/${workout.id}`}
             className="
               flex
-              h-[34px]
+              h-[38px]
+              w-full
               items-center
               justify-center
               rounded-full
@@ -180,6 +186,7 @@ export default function PlanWorkoutCard({
               text-[#e5e7eb]
               transition-colors
               hover:bg-[#1b2029]
+              sm:w-auto
             "
           >
             View Details
@@ -193,7 +200,8 @@ export default function PlanWorkoutCard({
               onClick={handleDone}
               className="
                 flex
-                h-[34px]
+                h-[38px]
+                w-full
                 items-center
                 justify-center
                 gap-2
@@ -206,13 +214,12 @@ export default function PlanWorkoutCard({
                 text-black
                 transition-opacity
                 hover:opacity-90
+                sm:w-auto
               "
             >
               <span>✓</span>
 
-              <span>
-                Mark as Done
-              </span>
+              <span>Mark as Done</span>
             </button>
           )}
 
@@ -223,8 +230,8 @@ export default function PlanWorkoutCard({
             onClick={handleRemove}
             className="
               flex
-              h-7
-              w-7
+              h-[38px]
+              w-full
               items-center
               justify-center
               rounded-full
@@ -235,6 +242,8 @@ export default function PlanWorkoutCard({
               transition-colors
               hover:bg-[#1f242d]
               hover:text-white
+              sm:h-8
+              sm:w-8
             "
             aria-label={`Remove ${workout.name}`}
           >
