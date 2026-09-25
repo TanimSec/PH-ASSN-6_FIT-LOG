@@ -30,9 +30,11 @@ export default function HeroSection() {
 
       {/* Right image */}
       <div className="h-[334px] w-[334px] shrink-0 overflow-hidden rounded-2xl">
-        <img
+        <Image
           src="/assets/banner.png"
           alt="FitLog workout"
+          width={334}
+          height={334}
           className="h-full w-full object-cover"
         />
       </div>
