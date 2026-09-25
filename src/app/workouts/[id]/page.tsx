@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { oswald } from "@/app/fonts";
+import WorkoutActions from "@/components/WorkoutActions";
 
 type Workout = {
   id: number;
@@ -32,7 +33,7 @@ export default async function WorkoutDetailsPage({
     `https://api.abcz.workers.dev/api/fitlog/${id}`,
     {
       cache: "no-store",
-    }
+    },
   );
 
   if (!response.ok) {
@@ -98,41 +99,22 @@ export default async function WorkoutDetailsPage({
           <div className="pb-8">
             <div className="overflow-hidden rounded-2xl border border-[#232834] bg-[#151922] p-px">
               <div>
-                <SpecRow
-                  label="EQUIPMENT"
-                  value={workout.equipment}
-                />
+                <SpecRow label="EQUIPMENT" value={workout.equipment} />
 
-                <SpecRow
-                  label="DIFFICULTY"
-                  value={workout.difficulty}
-                />
+                <SpecRow label="DIFFICULTY" value={workout.difficulty} />
 
-                <SpecRow
-                  label="SETS"
-                  value={String(workout.sets)}
-                />
+                <SpecRow label="SETS" value={String(workout.sets)} />
 
-                <SpecRow
-                  label="REPS"
-                  value={workout.reps}
-                />
+                <SpecRow label="REPS" value={workout.reps} />
 
-                <SpecRow
-                  label="DURATION"
-                  value={`${workout.duration} min`}
-                />
+                <SpecRow label="DURATION" value={`${workout.duration} min`} />
 
                 <SpecRow
                   label="CALORIES"
                   value={`${workout.caloriesBurned} kcal`}
                 />
 
-                <SpecRow
-                  label="RATING"
-                  value={String(workout.rating)}
-                  last
-                />
+                <SpecRow label="RATING" value={String(workout.rating)} last />
               </div>
             </div>
           </div>
@@ -152,43 +134,16 @@ export default async function WorkoutDetailsPage({
                     key={`${workout.id}-${index}`}
                     className="flex items-start text-[14px] leading-[22.75px]"
                   >
-                    <span className="pr-2 text-[#9ca3af]">
-                      {index + 1}.
-                    </span>
+                    <span className="pr-2 text-[#9ca3af]">{index + 1}.</span>
 
-                    <span className="text-[#d1d5db]">
-                      {instruction}
-                    </span>
+                    <span className="text-[#d1d5db]">{instruction}</span>
                   </li>
                 ))}
               </ol>
             </div>
           </div>
 
-          {/* =========================
-              ACTION BUTTONS
-          ========================== */}
-          <div className="flex flex-wrap items-center gap-4">
-            {/* Add to Plan */}
-            <button
-              type="button"
-              className="flex items-center justify-center gap-2 rounded-xl bg-[#ccff00] px-6 py-3 text-[14px] font-semibold leading-5 text-[#0f1115] shadow-[0_1px_1px_rgba(0,0,0,0.05)]"
-            >
-              <span className="text-base">＋</span>
-
-              <span>Add to today's plan</span>
-            </button>
-
-            {/* Save */}
-            <button
-              type="button"
-              className="flex items-center justify-center gap-2 rounded-xl border border-[#374151] px-[25px] py-[13px] text-[14px] font-medium leading-5 text-[#e5e7eb]"
-            >
-              <span className="text-base">♡</span>
-
-              <span>Save for later</span>
-            </button>
-          </div>
+          <WorkoutActions workout={workout} />
         </div>
       </div>
     </main>
@@ -211,9 +166,7 @@ function SpecRow({
   return (
     <div
       className={`flex items-center justify-center px-6 ${
-        last
-          ? "pb-[14px] pt-[15px]"
-          : "border-b border-[#1e2330] py-[15px]"
+        last ? "pb-[14px] pt-[15px]" : "border-b border-[#1e2330] py-[15px]"
       }`}
     >
       <div className="flex-1">
