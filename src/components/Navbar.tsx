@@ -53,7 +53,7 @@ export default function Navbar() {
             </span>
           </Link>
 
-          <Link href="/my-plan" className="flex items-center gap-2">
+          <Link href="/my-plan?tab=saved" className="flex items-center gap-2">
             <span className="text-[12px] font-medium text-[#9ca3af]">
               Saved
             </span>

@@ -13,11 +13,13 @@ type FitLogContextType = {
   plan: Workout[];
   saved: Workout[];
 
-  addToPlan: (workout: Workout) => void;
+  addToPlan: (workout: Workout) => boolean;
   removeFromPlan: (id: number) => void;
 
-  saveWorkout: (workout: Workout) => void;
+  saveWorkout: (workout: Workout) => boolean;
   removeSaved: (id: number) => void;
+
+  showToast: (message: string) => void;
 };
 
 const FitLogContext = createContext<FitLogContextType | undefined>(
@@ -32,20 +34,31 @@ export function FitLogProvider({
   const [plan, setPlan] = useState<Workout[]>([]);
   const [saved, setSaved] = useState<Workout[]>([]);
 
-  function addToPlan(workout: Workout) {
+  // -----------------------------
+  // PLAN
+  // -----------------------------
+
+  function addToPlan(workout: Workout): boolean {
+    let added = false;
+
     setPlan((currentPlan) => {
-      // Don't add the same workout twice
+      // Already exists
       if (currentPlan.some((item) => item.id === workout.id)) {
         return currentPlan;
       }
 
+      // Assignment requirement:
       // Maximum 5 workouts
       if (currentPlan.length >= 5) {
         return currentPlan;
       }
 
+      added = true;
+
       return [...currentPlan, workout];
     });
+
+    return added;
   }
 
   function removeFromPlan(id: number) {
@@ -54,20 +67,42 @@ export function FitLogProvider({
     );
   }
 
-  function saveWorkout(workout: Workout) {
+  // -----------------------------
+  // SAVED
+  // -----------------------------
+
+  function saveWorkout(workout: Workout): boolean {
+    let savedSuccessfully = false;
+
     setSaved((currentSaved) => {
-      // Don't save the same workout twice
+      // Already saved
       if (currentSaved.some((item) => item.id === workout.id)) {
         return currentSaved;
       }
 
+      savedSuccessfully = true;
+
       return [...currentSaved, workout];
     });
+
+    return savedSuccessfully;
   }
 
   function removeSaved(id: number) {
     setSaved((currentSaved) =>
       currentSaved.filter((workout) => workout.id !== id)
+    );
+  }
+
+  // -----------------------------
+  // TOAST
+  // -----------------------------
+
+  function showToast(message: string) {
+    window.dispatchEvent(
+      new CustomEvent("fitlog-toast", {
+        detail: message,
+      })
     );
   }
 
@@ -80,6 +115,7 @@ export function FitLogProvider({
         removeFromPlan,
         saveWorkout,
         removeSaved,
+        showToast,
       }}
     >
       {children}
