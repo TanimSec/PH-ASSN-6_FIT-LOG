@@ -16,7 +16,7 @@ async function getWorkout(id: string): Promise<Workout> {
     `https://api.abcz.workers.dev/api/fitlog/${id}`,
     {
       cache: "no-store",
-    }
+    },
   );
 
   if (!response.ok) {
@@ -41,6 +41,10 @@ export default async function WorkoutDetailsPage({
     return (
       <main className="mx-auto flex min-h-[70vh] max-w-[1280px] items-center justify-center px-6">
         <div className="text-center">
+          <p className="mb-3 text-xs font-semibold tracking-[2px] text-[#c2f800]">
+            FITLOG
+          </p>
+
           <h1
             className={`${oswald.className} text-3xl font-bold uppercase text-white`}
           >
@@ -48,7 +52,7 @@ export default async function WorkoutDetailsPage({
           </h1>
 
           <p className="mt-3 text-sm text-[#9ca3af]">
-            We couldn't find the workout you're looking for.
+            We couldn&apos;t find the workout you&apos;re looking for.
           </p>
 
           <Link
@@ -76,8 +80,19 @@ export default async function WorkoutDetailsPage({
 
   return (
     <main className="mx-auto w-full max-w-[1280px]">
-      <div className="flex flex-col gap-8 px-6 py-12 lg:flex-row">
-        {/* LEFT: WORKOUT IMAGE */}
+      <div
+        className="
+          flex
+          flex-col
+          gap-8
+          px-6
+          py-12
+          lg:flex-row
+        "
+      >
+        {/* ================================= */}
+        {/* LEFT — WORKOUT IMAGE              */}
+        {/* ================================= */}
 
         <section
           className="
@@ -89,10 +104,19 @@ export default async function WorkoutDetailsPage({
             border-[#232834]
             bg-[#171a21]
             shadow-xl
+            lg:h-[797px]
             lg:w-[48%]
           "
         >
-          <div className="relative aspect-[4/5] w-full">
+          <div
+            className="
+              relative
+              aspect-[4/5]
+              w-full
+              lg:h-full
+              lg:aspect-auto
+            "
+          >
             <Image
               src={workout.image}
               alt={workout.name}
@@ -104,9 +128,18 @@ export default async function WorkoutDetailsPage({
           </div>
         </section>
 
-        {/* RIGHT: DETAILS */}
+        {/* ================================= */}
+        {/* RIGHT — WORKOUT DETAILS            */}
+        {/* ================================= */}
 
-        <section className="flex w-full flex-col lg:w-[52%]">
+        <section
+          className="
+            flex
+            w-full
+            flex-col
+            lg:w-[52%]
+          "
+        >
           {/* TITLE */}
 
           <h1
@@ -125,7 +158,15 @@ export default async function WorkoutDetailsPage({
 
           {/* DESCRIPTION */}
 
-          <p className="mt-4 max-w-[576px] text-[16px] leading-6 text-[#9ca3af]">
+          <p
+            className="
+              mt-4
+              max-w-[576px]
+              text-[16px]
+              leading-6
+              text-[#9ca3af]
+            "
+          >
             {workout.description}
           </p>
 
@@ -151,7 +192,9 @@ export default async function WorkoutDetailsPage({
             ))}
           </div>
 
-          {/* SPECS */}
+          {/* ================================= */}
+          {/* SPECS                              */}
+          {/* ================================= */}
 
           <div
             className="
@@ -163,44 +206,27 @@ export default async function WorkoutDetailsPage({
               bg-[#151922]
             "
           >
-            <SpecRow
-              label="Equipment"
-              value={workout.equipment}
-            />
+            <SpecRow label="Equipment" value={workout.equipment} />
 
-            <SpecRow
-              label="Difficulty"
-              value={workout.difficulty}
-            />
+            <SpecRow label="Difficulty" value={workout.difficulty} />
 
-            <SpecRow
-              label="Sets"
-              value={String(workout.sets)}
-            />
+            <SpecRow label="Sets" value={String(workout.sets)} />
 
-            <SpecRow
-              label="Reps"
-              value={workout.reps}
-            />
+            <SpecRow label="Reps" value={workout.reps} />
 
-            <SpecRow
-              label="Duration"
-              value={`${workout.duration} min`}
-            />
+            <SpecRow label="Duration" value={`${workout.duration} min`} />
 
             <SpecRow
               label="Calories"
               value={`${workout.caloriesBurned} kcal`}
             />
 
-            <SpecRow
-              label="Rating"
-              value={String(workout.rating)}
-              last
-            />
+            <SpecRow label="Rating" value={String(workout.rating)} last />
           </div>
 
-          {/* INSTRUCTIONS */}
+          {/* ================================= */}
+          {/* INSTRUCTIONS                       */}
+          {/* ================================= */}
 
           <section className="mt-7">
             <h2
@@ -217,24 +243,28 @@ export default async function WorkoutDetailsPage({
             </h2>
 
             <ol className="mt-4 flex flex-col gap-3">
-              {workout.instructions.map(
-                (instruction, index) => (
-                  <li
-                    key={`${index}-${instruction}`}
-                    className="flex gap-3 text-[14px] leading-[22.75px] text-[#d1d5db]"
-                  >
-                    <span className="shrink-0 text-[#9ca3af]">
-                      {index + 1}.
-                    </span>
+              {workout.instructions.map((instruction, index) => (
+                <li
+                  key={`${index}-${instruction}`}
+                  className="
+                      flex
+                      gap-3
+                      text-[14px]
+                      leading-[22.75px]
+                      text-[#d1d5db]
+                    "
+                >
+                  <span className="shrink-0 text-[#9ca3af]">{index + 1}.</span>
 
-                    <span>{instruction}</span>
-                  </li>
-                )
-              )}
+                  <span>{instruction}</span>
+                </li>
+              ))}
             </ol>
           </section>
 
-          {/* ACTION BUTTONS */}
+          {/* ================================= */}
+          {/* ACTION BUTTONS                     */}
+          {/* ================================= */}
 
           <div className="mt-7">
             <WorkoutActions workout={workout} />
@@ -245,9 +275,9 @@ export default async function WorkoutDetailsPage({
   );
 }
 
-/* -------------------------------- */
-/* SPEC ROW                         */
-/* -------------------------------- */
+/* ================================= */
+/* SPECIFICATION ROW                 */
+/* ================================= */
 
 function SpecRow({
   label,
