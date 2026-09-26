@@ -38,10 +38,13 @@ export default function Toast() {
     <div
       className="
         fixed
-        right-5
-        top-5
+        left-4
+        right-4
+        top-4
         z-[9999]
+        mx-auto
         flex
+        max-w-sm
         items-center
         gap-3
         rounded-xl
@@ -53,6 +56,10 @@ export default function Toast() {
         text-sm
         text-white
         shadow-2xl
+        sm:left-auto
+        sm:right-5
+        sm:top-5
+        sm:max-w-md
       "
       role="status"
       aria-live="polite"

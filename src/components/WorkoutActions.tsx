@@ -62,7 +62,7 @@ export default function WorkoutActions({
   }
 
   return (
-    <div className="flex flex-wrap items-center gap-4">
+    <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
       {/* ADD TO PLAN */}
 
       <button
@@ -71,6 +71,8 @@ export default function WorkoutActions({
         disabled={isInPlan}
         className="
           flex
+          w-full
+          sm:w-auto
           items-center
           justify-center
           gap-2
@@ -81,8 +83,9 @@ export default function WorkoutActions({
           text-sm
           font-semibold
           text-black
-          transition-opacity
+          transition-all
           hover:opacity-90
+          active:scale-[0.98]
           disabled:cursor-not-allowed
           disabled:opacity-50
         "
@@ -104,6 +107,8 @@ export default function WorkoutActions({
         disabled={isSaved}
         className="
           flex
+          w-full
+          sm:w-auto
           items-center
           justify-center
           gap-2
@@ -115,8 +120,9 @@ export default function WorkoutActions({
           text-sm
           font-medium
           text-[#e5e7eb]
-          transition-colors
+          transition-all
           hover:bg-[#1b2029]
+          active:scale-[0.98]
           disabled:cursor-not-allowed
           disabled:opacity-50
         "

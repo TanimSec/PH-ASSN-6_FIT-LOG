@@ -160,10 +160,10 @@ export default function PlanWorkoutCard({
             w-full
             shrink-0
             flex-col
-            gap-2
+            gap-2.5
             sm:flex-row
+            sm:items-center
             md:w-auto
-            md:items-center
           "
         >
           {/* VIEW DETAILS */}
@@ -235,19 +235,24 @@ export default function PlanWorkoutCard({
               items-center
               justify-center
               rounded-full
-              text-[20px]
-              font-light
-              leading-none
+              border
+              border-[#232732]
+              text-[12px]
+              font-medium
               text-[#8a92a0]
               transition-colors
               hover:bg-[#1f242d]
               hover:text-white
               sm:h-8
               sm:w-8
+              sm:border-0
+              sm:text-[20px]
+              sm:font-light
             "
             aria-label={`Remove ${workout.name}`}
           >
-            ×
+            <span className="mr-1 sm:hidden">Remove</span>
+            <span>×</span>
           </button>
         </div>
       </div>

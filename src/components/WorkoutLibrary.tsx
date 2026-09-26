@@ -44,12 +44,12 @@ export default function WorkoutLibrary() {
   return (
     <section
       id="library"
-      className="mx-auto w-full max-w-[1232px] px-6 pb-20"
+      className="mx-auto w-full max-w-[1232px] px-4 sm:px-6 pb-16 sm:pb-20"
     >
       {/* LIBRARY HEADER */}
 
-      <div className="mb-5">
-        <h2 className="text-3xl font-bold uppercase leading-9 text-white">
+      <div className="mb-5 sm:mb-6">
+        <h2 className="text-2xl sm:text-3xl font-bold uppercase leading-tight sm:leading-9 text-white">
           THE LIBRARY
         </h2>
 
@@ -70,8 +70,9 @@ export default function WorkoutLibrary() {
             className="
               grid
               grid-cols-1
-              gap-6
-              md:grid-cols-2
+              gap-5
+              sm:gap-6
+              sm:grid-cols-2
               lg:grid-cols-3
             "
             aria-label="Loading workouts"
@@ -168,8 +169,9 @@ export default function WorkoutLibrary() {
           className="
             grid
             grid-cols-1
-            gap-6
-            md:grid-cols-2
+            gap-5
+            sm:gap-6
+            sm:grid-cols-2
             lg:grid-cols-3
           "
         >

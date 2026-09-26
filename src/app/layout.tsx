@@ -19,8 +19,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} bg-[#0c0d10] text-white`}>
+    <html lang="en" className="dark">
+      <body
+        className={`${inter.className} flex min-h-screen flex-col overflow-x-clip bg-[#0c0d10] text-white`}
+      >
         <FitLogProvider>
           <Navbar />
 

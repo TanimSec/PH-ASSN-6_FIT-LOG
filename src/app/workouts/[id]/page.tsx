@@ -79,15 +79,20 @@ export default async function WorkoutDetailsPage({
   }
 
   return (
-    <main className="mx-auto w-full max-w-[1280px]">
+    <main className="mx-auto w-full max-w-[1280px] flex-1">
       <div
         className="
           flex
           flex-col
           gap-8
-          px-6
-          py-12
+          px-4
+          py-8
+          sm:px-6
+          sm:py-10
+          md:px-8
+          md:py-12
           lg:flex-row
+          lg:px-12
         "
       >
         {/* ================================= */}
@@ -111,8 +116,9 @@ export default async function WorkoutDetailsPage({
           <div
             className="
               relative
-              aspect-[4/5]
+              aspect-[4/3]
               w-full
+              sm:aspect-[4/5]
               lg:h-full
               lg:aspect-auto
             "
@@ -145,12 +151,15 @@ export default async function WorkoutDetailsPage({
           <h1
             className={`
               ${oswald.className}
-              text-[36px]
+              text-[26px]
               font-bold
               uppercase
-              leading-10
+              leading-tight
               tracking-[-0.9px]
               text-white
+              sm:text-[32px]
+              sm:leading-10
+              md:text-[36px]
             `}
           >
             {workout.name}
@@ -160,11 +169,13 @@ export default async function WorkoutDetailsPage({
 
           <p
             className="
-              mt-4
+              mt-3
               max-w-[576px]
-              text-[16px]
+              text-[15px]
               leading-6
               text-[#9ca3af]
+              sm:mt-4
+              sm:text-[16px]
             "
           >
             {workout.description}
@@ -172,19 +183,21 @@ export default async function WorkoutDetailsPage({
 
           {/* CATEGORY TAGS */}
 
-          <div className="mt-5 flex flex-wrap gap-2.5">
+          <div className="mt-4 flex flex-wrap gap-2 sm:mt-5 sm:gap-2.5">
             {workout.muscleGroups.map((muscleGroup) => (
               <span
                 key={muscleGroup}
                 className="
                   rounded-full
                   bg-[#ccff00]
-                  px-3.5
+                  px-3
                   py-1
-                  text-[12px]
+                  text-[11px]
                   font-semibold
                   leading-4
                   text-[#0f1115]
+                  sm:px-3.5
+                  sm:text-[12px]
                 "
               >
                 {muscleGroup}
@@ -198,12 +211,13 @@ export default async function WorkoutDetailsPage({
 
           <div
             className="
-              mt-7
+              mt-6
               overflow-hidden
               rounded-2xl
               border
               border-[#232834]
               bg-[#151922]
+              sm:mt-7
             "
           >
             <SpecRow label="Equipment" value={workout.equipment} />
@@ -228,30 +242,33 @@ export default async function WorkoutDetailsPage({
           {/* INSTRUCTIONS                       */}
           {/* ================================= */}
 
-          <section className="mt-7">
+          <section className="mt-6 sm:mt-7">
             <h2
               className="
-                text-[16px]
+                text-[15px]
                 font-extrabold
                 uppercase
                 leading-6
                 tracking-[0.8px]
                 text-white
+                sm:text-[16px]
               "
             >
               Instructions
             </h2>
 
-            <ol className="mt-4 flex flex-col gap-3">
+            <ol className="mt-3 flex flex-col gap-2.5 sm:mt-4 sm:gap-3">
               {workout.instructions.map((instruction, index) => (
                 <li
                   key={`${index}-${instruction}`}
                   className="
                       flex
                       gap-3
-                      text-[14px]
-                      leading-[22.75px]
+                      text-[13px]
+                      leading-[22px]
                       text-[#d1d5db]
+                      sm:text-[14px]
+                      sm:leading-[22.75px]
                     "
                 >
                   <span className="shrink-0 text-[#9ca3af]">{index + 1}.</span>
@@ -266,7 +283,7 @@ export default async function WorkoutDetailsPage({
           {/* ACTION BUTTONS                     */}
           {/* ================================= */}
 
-          <div className="mt-7">
+          <div className="mt-6 sm:mt-7">
             <WorkoutActions workout={workout} />
           </div>
         </section>
@@ -292,23 +309,28 @@ function SpecRow({
     <div
       className={`
         flex
-        min-h-[52px]
+        min-h-[48px]
         items-center
         justify-between
-        gap-6
-        px-5
-        py-3
+        gap-4
+        px-4
+        py-2.5
+        sm:min-h-[52px]
+        sm:gap-6
+        sm:px-5
+        sm:py-3
         ${!last ? "border-b border-[#1e2330]" : ""}
       `}
     >
       <span
         className="
-          text-[12px]
+          text-[11px]
           font-bold
           uppercase
           leading-4
           tracking-[0.6px]
           text-[#9ca3af]
+          sm:text-[12px]
         "
       >
         {label}
@@ -317,10 +339,11 @@ function SpecRow({
       <span
         className="
           text-right
-          text-[14px]
+          text-[13px]
           font-medium
           leading-5
           text-[#e5e7eb]
+          sm:text-[14px]
         "
       >
         {value}

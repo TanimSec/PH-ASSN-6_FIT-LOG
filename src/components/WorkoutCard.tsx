@@ -35,13 +35,13 @@ export default function WorkoutCard({
           alt={workout.name}
           fill
           className="object-cover"
-          sizes="(max-width: 768px) 100vw, 33vw"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
       </div>
 
       {/* CONTENT */}
 
-      <div className="flex min-h-[174px] flex-col p-6">
+      <div className="flex min-h-[174px] flex-col p-5 sm:p-6">
         {/* TAGS */}
 
         <div className="flex flex-wrap gap-2">
@@ -80,7 +80,7 @@ export default function WorkoutCard({
 
         {/* STATS */}
 
-        <div className="mt-auto flex items-center gap-4 border-t border-[#20242e] pt-3 text-[12px] leading-4 text-[#9ca3af]">
+        <div className="mt-auto flex flex-wrap items-center gap-x-4 gap-y-1.5 border-t border-[#20242e] pt-3 text-[12px] leading-4 text-[#9ca3af]">
           <span>
             ◷ {workout.duration} min
           </span>

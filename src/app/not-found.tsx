@@ -4,20 +4,20 @@ import { oswald } from "@/app/fonts";
 
 export default function NotFound() {
   return (
-    <main className="flex min-h-[calc(100vh-81px)] items-center justify-center px-6">
+    <main className="flex flex-1 min-h-[calc(100vh-81px)] items-center justify-center px-4 sm:px-6">
       <div className="text-center">
         <p className="mb-3 text-xs font-semibold tracking-[2px] text-[#c2f800]">
           FITLOG
         </p>
 
         <h1
-          className={`${oswald.className} text-6xl font-bold uppercase leading-none text-white`}
+          className={`${oswald.className} text-5xl sm:text-6xl font-bold uppercase leading-none text-white`}
         >
           404
         </h1>
 
         <h2
-          className={`${oswald.className} mt-4 text-2xl font-bold uppercase text-white`}
+          className={`${oswald.className} mt-4 text-xl sm:text-2xl font-bold uppercase text-white`}
         >
           WORKOUT NOT FOUND
         </h2>

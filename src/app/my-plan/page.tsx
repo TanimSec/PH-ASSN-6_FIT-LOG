@@ -45,20 +45,20 @@ export default function MyPlanPage() {
 
   return (
     <>
-      <main className="mx-auto w-full max-w-[1280px]">
-        <div className="flex flex-col gap-6 px-6 py-10 md:px-12">
+      <main className="mx-auto w-full max-w-[1280px] flex-1">
+        <div className="flex flex-col gap-6 px-4 py-6 sm:px-6 sm:py-8 md:px-12 md:py-10">
           {/* =================================
               TITLE & DESCRIPTION
           ================================= */}
 
-          <section className="flex flex-col gap-2">
+          <section className="flex flex-col gap-1.5 sm:gap-2">
             <h1
-              className={`${oswald.className} text-[30px] font-bold uppercase leading-9 tracking-[-0.75px] text-white`}
+              className={`${oswald.className} text-[26px] sm:text-[30px] font-bold uppercase leading-tight sm:leading-9 tracking-[-0.75px] text-white`}
             >
               MY PLAN
             </h1>
 
-            <p className="text-[14px] leading-5 text-[#8a92a0]">
+            <p className="text-[13px] sm:text-[14px] leading-5 text-[#8a92a0]">
               Cap of five lifts for today. Finish them, then load more.
             </p>
           </section>
@@ -67,16 +67,16 @@ export default function MyPlanPage() {
               METRICS
           ================================= */}
 
-          <section className="flex min-h-[122px] items-center rounded-2xl border border-[#232732] bg-[#13161d] px-[25px] pb-[25px] pt-[33px]">
+          <section className="flex min-h-0 sm:min-h-[122px] items-center rounded-2xl border border-[#232732] bg-[#13161d] px-4 py-4 sm:px-6 sm:py-5 md:px-[25px] md:pb-[25px] md:pt-[33px]">
             {/* Exercises */}
 
-            <div className="min-w-0 flex-1 pr-6">
-              <p className="pb-1 text-[12px] leading-4 text-[#8a92a0]">
+            <div className="min-w-0 flex-1 pr-2 sm:pr-4 md:pr-6">
+              <p className="pb-1 text-[11px] sm:text-[12px] leading-4 text-[#8a92a0]">
                 Exercises
               </p>
 
               <p
-                className={`${oswald.className} text-[36px] font-bold leading-10 text-[#ccff00]`}
+                className={`${oswald.className} text-[24px] sm:text-[30px] md:text-[36px] font-bold leading-tight sm:leading-10 text-[#ccff00]`}
               >
                 {plan.length}
               </p>
@@ -84,13 +84,13 @@ export default function MyPlanPage() {
 
             {/* Minutes */}
 
-            <div className="min-w-0 flex-1 border-l border-[rgba(35,39,50,0.6)] pl-[33px] pr-8">
-              <p className="pb-1 text-[12px] leading-4 text-[#8a92a0]">
+            <div className="min-w-0 flex-1 border-l border-[rgba(35,39,50,0.6)] pl-3 sm:pl-6 md:pl-[33px] pr-2 sm:pr-4 md:pr-8">
+              <p className="pb-1 text-[11px] sm:text-[12px] leading-4 text-[#8a92a0]">
                 Minutes
               </p>
 
               <p
-                className={`${oswald.className} text-[36px] font-bold leading-10 text-white`}
+                className={`${oswald.className} text-[24px] sm:text-[30px] md:text-[36px] font-bold leading-tight sm:leading-10 text-white`}
               >
                 {totalMinutes}
               </p>
@@ -98,13 +98,13 @@ export default function MyPlanPage() {
 
             {/* Calories */}
 
-            <div className="min-w-0 flex-1 border-l border-[rgba(35,39,50,0.6)] pl-[33px]">
-              <p className="pb-1 text-[12px] leading-4 text-[#8a92a0]">
+            <div className="min-w-0 flex-1 border-l border-[rgba(35,39,50,0.6)] pl-3 sm:pl-6 md:pl-[33px]">
+              <p className="pb-1 text-[11px] sm:text-[12px] leading-4 text-[#8a92a0]">
                 Calories
               </p>
 
               <p
-                className={`${oswald.className} text-[36px] font-bold leading-10 text-white`}
+                className={`${oswald.className} text-[24px] sm:text-[30px] md:text-[36px] font-bold leading-tight sm:leading-10 text-white`}
               >
                 {totalCalories}
               </p>
@@ -208,7 +208,7 @@ function EmptyState({
   activeTab: Tab;
 }) {
   return (
-    <div className="flex min-h-[300px] flex-col items-center justify-center rounded-xl border border-dashed border-[rgba(255,255,255,0.1)] bg-[rgba(17,19,23,0.5)] px-4 py-24 text-center">
+    <div className="flex min-h-[260px] sm:min-h-[300px] flex-col items-center justify-center rounded-xl border border-dashed border-[rgba(255,255,255,0.1)] bg-[rgba(17,19,23,0.5)] px-4 py-16 sm:py-24 text-center">
       <h2
         className={`${oswald.className} pb-2 text-[20px] font-bold uppercase leading-5 tracking-[0.7px] text-white`}
       >
